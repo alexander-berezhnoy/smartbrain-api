@@ -41,15 +41,10 @@ app.get("/", (req, res) => {
 
 app.post("/signin", (req, res) => {
   if (
-    // database.users
-    //   .filter(user => {
-    //     user.email === req.body.email;
-    //   })
-    //   .some(user => user.password === req.body.password)
-    req.body.email === database.users[1].email &&
-    req.body.password === database.users[1].password
+    req.body.email === database.users[0].email &&
+    req.body.password === database.users[0].password
   ) {
-    res.json(database.users[1]);
+    res.send("success");
   } else {
     res.status(400).json("error logging in");
   }
@@ -68,9 +63,9 @@ app.post("/register", (req, res) => {
     entries: 0,
     joined: new Date()
   };
-  console.log(newUser);
+
   database.users.push(newUser);
-  console.log(database.users[database.users.length - 1]);
+  console.log(database.users.length, newUser);
   res.json(newUser);
 });
 
