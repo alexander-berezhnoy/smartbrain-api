@@ -24,7 +24,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
-  res.render("/signin");
+  res.send("It is working");
 });
 
 app.post("/signin", signin.handleSignin(db, bcrypt));
@@ -35,7 +35,7 @@ app.post("/imageurl", (req, res) => {
   image.handleApiCall(req, res);
 });
 
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
   console.log(`Server is running on port ${port}`);
 });
