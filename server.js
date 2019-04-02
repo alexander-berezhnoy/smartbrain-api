@@ -31,6 +31,9 @@ app.post("/signin", signin.handleSignin(db, bcrypt));
 app.post("/register", register.handleRegister(db, bcrypt));
 app.get("/profile/:id", profile.handleProfileGet(db));
 app.put("/image", image.handleImage(db));
+app.post("/imageurl", (req, res) => {
+  image.handleApiCall(req, res);
+});
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
